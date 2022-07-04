@@ -1,7 +1,9 @@
 a = "abc";
-pn a;
-pn "hello
+output a;
+output "hello
 world!!";
+
+
 
 @@ ‚¨‚¨‚¨‚¨‚¨
 
