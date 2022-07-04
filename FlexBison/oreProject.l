@@ -25,8 +25,8 @@ int yywrap(void){ return 1; }
     "=" return ASS;
     "pn"     return PRINTN;
     "p"     return PRINT;
-    "/*"    { BEGIN(COMMENT);}
-    [/][/]+ { BEGIN(LINE_COMMENT);}
+    "/@"    { BEGIN(COMMENT);}
+    [@][@]+ { BEGIN(LINE_COMMENT);}
     "\""    {
                 ore::Interpreter::getInp()->startStringLiteral();
                 BEGIN(STR_LITERAL_ST_D);
@@ -53,7 +53,7 @@ int yywrap(void){ return 1; }
 }
 <COMMENT>{
     "\n"    {gLine++;}
-    "*/" {BEGIN(INITIAL);}
+    "@/" {BEGIN(INITIAL);}
     .   ;
 }
 <LINE_COMMENT>{
