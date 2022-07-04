@@ -23,7 +23,7 @@ int yywrap(void){ return 1; }
     "*"     return MUL;
     "/"     return DIV;
     "=" return ASS;
-    "pn"     return PRINTN;
+    "output"     return PRINTN;
     "p"     return PRINT;
     "/@"    { BEGIN(COMMENT);}
     [@][@]+ { BEGIN(LINE_COMMENT);}
