@@ -461,6 +461,11 @@ namespace ore {
 		return *this;
 	}
 
+	Value& Value::operator%=(const Value& other) {
+		*this = *this % other;
+		return *this;
+	}
+
 	bool Value::operator == (const Value& other) {
 		if (this->getType() == ValueType::stringVal
 			&& other.getType() == ValueType::stringVal) {

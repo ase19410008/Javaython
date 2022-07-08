@@ -23,13 +23,13 @@ int yyerror(char const *str) {
 }
 %token <fixedString> IDENTIFIER
 %token <expression> INT_LITERAL DOUBLE_LITERAL STR_LITERAL
-%token SEMICOLON ADD SUB MUL DIV CR 
-%token MULASS DIVASS ADDASS SUBASS ASS PRINTN PRINT EXPO
+%token SEMICOLON ADD SUB MUL DIV MOD CR 
+%token MULASS DIVASS MODASS ADDASS SUBASS ASS PRINTN PRINT EXPO
 %right ASS
 %right ADDASS SUBASS
-%right MULASS DIVASS
+%right MULASS DIVASS MODASS
 %left ADD SUB
-%left MUL DIV
+%left MUL DIV MOD
 %type <expression> constart_expression identifier_expression
 %type <expression> primary_expression mul_expression add_expression
 %type <expression> assign_expression expression
@@ -89,6 +89,10 @@ assign_expression
     {
         $$ = ore::Interpreter::getInp()->createToAssExp($1, $3, ore::ExpressionType::divAssExp);
     }
+    | identifier_expression MODASS assign_expression
+    {
+        $$ = ore::Interpreter::getInp()->createToAssExp($1, $3, ore::ExpressionType::modAssExp);
+    }
     | identifier_expression ADDASS assign_expression
     {
         $$ = ore::Interpreter::getInp()->createToAssExp($1, $3, ore::ExpressionType::addAssExp);
@@ -122,6 +126,10 @@ mul_expression
     | mul_expression DIV primary_expression
     {
         $$ = ore::Interpreter::getInp()->createBinaryExp($1, $3, ore::ExpressionType::divExp);
+    }
+    | mul_expression MOD primary_expression
+    {
+        $$ = ore::Interpreter::getInp()->createBinaryExp($1, $3, ore::ExpressionType::modExp);
     }
     | mul_expression EXPO primary_expression
     {

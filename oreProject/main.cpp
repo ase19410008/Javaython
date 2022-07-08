@@ -46,12 +46,6 @@ int main(int argc, char** argv) {
         cout << "err2" << endl;
         return 1;
     }
-    /*auto tntp = ore::Interpreter::getInp();
-    if (tntp->Compile(fp)) {
-        return 1;
-    }
-    tntp->Exec();
-    tntp->Delete();*/
     auto itp = ore::Interpreter::getInp();
     if (itp->Compile(fp)) {
         return 1;

@@ -13,10 +13,12 @@ namespace ore {
         subAssExp,
         mulAssExp,
         divAssExp,
+        modAssExp,
         addExp,
         subExp,
         mulExp,
         divExp,
+        modExp,
         printExp,
         expTypeCount,
         expoExp

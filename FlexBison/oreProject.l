@@ -16,12 +16,14 @@ int yywrap(void){ return 1; }
     ";"     return SEMICOLON;
     "*=" return MULASS;
     "/=" return DIVASS;
+    "%=" return MODASS;
     "+=" return ADDASS;
     "-=" return SUBASS;
     "+"     return ADD;
     "-"     return SUB;
     "*"     return MUL;
     "/"     return DIV;
+    "%"     return MOD;
     "**"    return EXPO;
     "=" return ASS;
     "output"     return PRINTN;
