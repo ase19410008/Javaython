@@ -18,7 +18,8 @@ namespace ore {
         mulExp,
         divExp,
         printExp,
-        expTypeCount
+        expTypeCount,
+        expoExp
     };
 
     class Expression : public ObjBase {

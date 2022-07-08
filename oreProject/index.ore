@@ -3,6 +3,8 @@ output a;
 output "hello
 world!!";
 
+output 1 ** 100;
+
 
 
 @@ ‚¨‚¨‚¨‚¨‚¨

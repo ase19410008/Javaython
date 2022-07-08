@@ -22,6 +22,7 @@ int yywrap(void){ return 1; }
     "-"     return SUB;
     "*"     return MUL;
     "/"     return DIV;
+    "**"    return EXPO;
     "=" return ASS;
     "output"     return PRINTN;
     "p"     return PRINT;

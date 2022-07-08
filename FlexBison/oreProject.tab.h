@@ -76,7 +76,8 @@ extern int yydebug;
     SUBASS = 271,                  /* SUBASS  */
     ASS = 272,                     /* ASS  */
     PRINTN = 273,                  /* PRINTN  */
-    PRINT = 274                    /* PRINT  */
+    PRINT = 274,                   /* PRINT  */
+    EXPO = 275                     /* EXPO  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -93,7 +94,7 @@ union YYSTYPE
     ore::StatementList* statementList;
     ore::Root* root;
 
-#line 97 "oreProject.tab.h"
+#line 98 "oreProject.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
