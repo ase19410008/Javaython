@@ -41,7 +41,7 @@ namespace ore {
 		Value& operator-=(const Value& other);
 		Value& operator*=(const Value& other);
 		Value& operator/=(const Value& other);
-		// Value operator%(const Value& other);
+		Value& operator%=(const Value& other);
 		Value& operator&=(const Value& other);
 		bool operator == (const Value& other);
 		bool operator != (const Value& other);

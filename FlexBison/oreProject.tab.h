@@ -69,15 +69,17 @@ extern int yydebug;
     SUB = 264,                     /* SUB  */
     MUL = 265,                     /* MUL  */
     DIV = 266,                     /* DIV  */
-    CR = 267,                      /* CR  */
-    MULASS = 268,                  /* MULASS  */
-    DIVASS = 269,                  /* DIVASS  */
-    ADDASS = 270,                  /* ADDASS  */
-    SUBASS = 271,                  /* SUBASS  */
-    ASS = 272,                     /* ASS  */
-    PRINTN = 273,                  /* PRINTN  */
-    PRINT = 274,                   /* PRINT  */
-    EXPO = 275                     /* EXPO  */
+    MOD = 267,                     /* MOD  */
+    CR = 268,                      /* CR  */
+    MULASS = 269,                  /* MULASS  */
+    DIVASS = 270,                  /* DIVASS  */
+    MODASS = 271,                  /* MODASS  */
+    ADDASS = 272,                  /* ADDASS  */
+    SUBASS = 273,                  /* SUBASS  */
+    ASS = 274,                     /* ASS  */
+    PRINTN = 275,                  /* PRINTN  */
+    PRINT = 276,                   /* PRINT  */
+    EXPO = 277                     /* EXPO  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -94,7 +96,7 @@ union YYSTYPE
     ore::StatementList* statementList;
     ore::Root* root;
 
-#line 98 "oreProject.tab.h"
+#line 100 "oreProject.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

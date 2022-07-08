@@ -31,7 +31,6 @@
     <ClInclude Include="interpreter.h" />
     <ClInclude Include="objBase.h" />
     <ClInclude Include="proc.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="statement.h" />
     <ClInclude Include="util.h" />
     <ClInclude Include="value.h" />

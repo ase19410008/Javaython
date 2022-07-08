@@ -63,6 +63,5 @@ namespace ore {
 	private:
 		struct Impl;
 		Impl* pImpl;
-		// void createPrintStatement(double val, bool retFlg);
 	};
 }

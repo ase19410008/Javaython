@@ -225,6 +225,9 @@ namespace ore {
             case ExpressionType::divAssExp:
                 v /= pImpl->m_Operand->Excute();
                 break;
+            case ExpressionType::modAssExp:
+                v %= pImpl->m_Operand->Excute();
+                break;
             }
             return v;
         }
@@ -271,13 +274,14 @@ namespace ore {
                 break;
             case ExpressionType::divExp:
                 return (pImpl->m_Left->Excute() / pImpl->m_Right->Excute());
+            case ExpressionType::modExp:
+                return (pImpl->m_Left->Excute() % pImpl->m_Right->Excute());
             case ExpressionType::expoExp:
-                // return double pow(double pImpl->m_Left->Excute(), double pImpl->m_Right->Excute());
-                Value d(pImpl->m_Left->Excute());
+                Value v(pImpl->m_Left->Excute());
                 for (int i = 1; i < pImpl->m_Right->Excute().getInt(); i++) {
-                    d *= pImpl->m_Left->Excute();
+                    v *= pImpl->m_Left->Excute();
                 }
-                return d;
+                return v;
                 break;
             }
         Interpreter::getInp()->runtimeExit(2004);

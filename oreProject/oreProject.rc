@@ -1,8 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
 
-#include "resource.h"
-
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -14,7 +12,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// ‰pŒê (•Ä‘) resources
+// ï¿½pï¿½ï¿½ (ï¿½Äï¿½) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE 17, 1
@@ -44,7 +42,7 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-#endif    // ‰pŒê (•Ä‘) resources
+#endif    // ï¿½pï¿½ï¿½ (ï¿½Äï¿½) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
