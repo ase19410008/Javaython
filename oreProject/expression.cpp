@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <math.h>
 #include <iostream>
 #include <string>
 #include <set>
@@ -270,6 +271,13 @@ namespace ore {
                 break;
             case ExpressionType::divExp:
                 return (pImpl->m_Left->Excute() / pImpl->m_Right->Excute());
+            case ExpressionType::expoExp:
+                // return double pow(double pImpl->m_Left->Excute(), double pImpl->m_Right->Excute());
+                Value d(pImpl->m_Left->Excute());
+                for (int i = 1; i < pImpl->m_Right->Excute().getInt(); i++) {
+                    d *= pImpl->m_Left->Excute();
+                }
+                return d;
                 break;
             }
         Interpreter::getInp()->runtimeExit(2004);

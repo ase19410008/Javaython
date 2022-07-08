@@ -24,7 +24,7 @@ int yyerror(char const *str) {
 %token <fixedString> IDENTIFIER
 %token <expression> INT_LITERAL DOUBLE_LITERAL STR_LITERAL
 %token SEMICOLON ADD SUB MUL DIV CR 
-%token MULASS DIVASS ADDASS SUBASS ASS PRINTN PRINT
+%token MULASS DIVASS ADDASS SUBASS ASS PRINTN PRINT EXPO
 %right ASS
 %right ADDASS SUBASS
 %right MULASS DIVASS
@@ -123,6 +123,11 @@ mul_expression
     {
         $$ = ore::Interpreter::getInp()->createBinaryExp($1, $3, ore::ExpressionType::divExp);
     }
+    | mul_expression EXPO primary_expression
+    {
+        $$ = ore::Interpreter::getInp()->createBinaryExp($1, $3, ore::ExpressionType::expoExp);
+    }
+
     ;
 primary_expression
     : identifier_expression
