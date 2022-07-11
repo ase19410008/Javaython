@@ -64,22 +64,24 @@ extern int yydebug;
     INT_LITERAL = 259,             /* INT_LITERAL  */
     DOUBLE_LITERAL = 260,          /* DOUBLE_LITERAL  */
     STR_LITERAL = 261,             /* STR_LITERAL  */
-    SEMICOLON = 262,               /* SEMICOLON  */
-    ADD = 263,                     /* ADD  */
-    SUB = 264,                     /* SUB  */
-    MUL = 265,                     /* MUL  */
-    DIV = 266,                     /* DIV  */
-    MOD = 267,                     /* MOD  */
-    CR = 268,                      /* CR  */
-    MULASS = 269,                  /* MULASS  */
-    DIVASS = 270,                  /* DIVASS  */
-    MODASS = 271,                  /* MODASS  */
-    ADDASS = 272,                  /* ADDASS  */
-    SUBASS = 273,                  /* SUBASS  */
-    ASS = 274,                     /* ASS  */
-    PRINTN = 275,                  /* PRINTN  */
-    PRINT = 276,                   /* PRINT  */
-    EXPO = 277                     /* EXPO  */
+    AMP = 262,                     /* AMP  */
+    SEMICOLON = 263,               /* SEMICOLON  */
+    ADD = 264,                     /* ADD  */
+    SUB = 265,                     /* SUB  */
+    MUL = 266,                     /* MUL  */
+    DIV = 267,                     /* DIV  */
+    MOD = 268,                     /* MOD  */
+    CR = 269,                      /* CR  */
+    MULASS = 270,                  /* MULASS  */
+    DIVASS = 271,                  /* DIVASS  */
+    MODASS = 272,                  /* MODASS  */
+    ADDASS = 273,                  /* ADDASS  */
+    SUBASS = 274,                  /* SUBASS  */
+    AMPASS = 275,                  /* AMPASS  */
+    ASS = 276,                     /* ASS  */
+    PRINTN = 277,                  /* PRINTN  */
+    PRINT = 278,                   /* PRINT  */
+    EXPO = 279                     /* EXPO  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -96,7 +98,7 @@ union YYSTYPE
     ore::StatementList* statementList;
     ore::Root* root;
 
-#line 100 "oreProject.tab.h"
+#line 102 "oreProject.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

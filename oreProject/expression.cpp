@@ -219,6 +219,9 @@ namespace ore {
             case ExpressionType::subAssExp:
                 v -= pImpl->m_Operand->Excute();
                 break;
+            case ExpressionType::ampAssExp:
+                v &= pImpl->m_Operand->Excute();
+                break;
             case ExpressionType::mulAssExp:
                 v *= pImpl->m_Operand->Excute();
                 break;
@@ -268,6 +271,9 @@ namespace ore {
                 break;
             case ExpressionType::subExp:
                 return (pImpl->m_Left->Excute() - pImpl->m_Right->Excute());
+                break;
+            case ExpressionType::ampExp:
+                return (pImpl->m_Left->Excute() & pImpl->m_Right->Excute());
                 break;
             case ExpressionType::mulExp:
                 return (pImpl->m_Left->Excute() * pImpl->m_Right->Excute());

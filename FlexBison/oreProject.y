@@ -23,10 +23,10 @@ int yyerror(char const *str) {
 }
 %token <fixedString> IDENTIFIER
 %token <expression> INT_LITERAL DOUBLE_LITERAL STR_LITERAL
-%token SEMICOLON ADD SUB MUL DIV MOD CR 
-%token MULASS DIVASS MODASS ADDASS SUBASS ASS PRINTN PRINT EXPO
+%token AMP SEMICOLON ADD SUB MUL DIV MOD CR 
+%token MULASS DIVASS MODASS ADDASS SUBASS AMPASS ASS PRINTN PRINT EXPO
 %right ASS
-%right ADDASS SUBASS
+%right ADDASS SUBASS AMPASS
 %right MULASS DIVASS MODASS
 %left ADD SUB
 %left MUL DIV MOD
@@ -101,6 +101,10 @@ assign_expression
     {
         $$ = ore::Interpreter::getInp()->createToAssExp($1, $3, ore::ExpressionType::subAssExp);
     }
+    | identifier_expression AMPASS assign_expression
+    {
+        $$ = ore::Interpreter::getInp()->createToAssExp($1, $3, ore::ExpressionType::ampAssExp);
+    }
     | identifier_expression ASS assign_expression
     {
         $$ = ore::Interpreter::getInp()->createAssExp($1, $3);
@@ -115,6 +119,10 @@ add_expression
     | add_expression SUB mul_expression
     {
         $$ = ore::Interpreter::getInp()->createBinaryExp($1, $3, ore::ExpressionType::subExp);
+    }
+    | add_expression AMP mul_expression
+    {
+        $$ = ore::Interpreter::getInp()->createBinaryExp($1, $3, ore::ExpressionType::ampExp);
     }
     ;
 mul_expression

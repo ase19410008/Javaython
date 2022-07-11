@@ -19,12 +19,14 @@ int yywrap(void){ return 1; }
     "%=" return MODASS;
     "+=" return ADDASS;
     "-=" return SUBASS;
+    "&="    return AMPASS;
     "+"     return ADD;
     "-"     return SUB;
     "*"     return MUL;
     "/"     return DIV;
     "%"     return MOD;
     "**"    return EXPO;
+    "&"     return AMP;
     "=" return ASS;
     "output"     return PRINTN;
     "p"     return PRINT;
