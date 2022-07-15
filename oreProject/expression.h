@@ -4,6 +4,7 @@ namespace ore {
 
     enum class ExpressionType {
         noExp = 0,
+        boolLiteralExp = 0,
         intLiteralExp,
         doubleLiteralExp,
         stringLiteralExp,
@@ -33,6 +34,17 @@ namespace ore {
         virtual Value Excute() const {
             return Value();
         }
+    private:
+        struct Impl;
+        Impl* pImpl;
+    };
+
+    class BoolLiteralExp : public Expression {
+    public:
+        BoolLiteralExp(bool b = false);
+        virtual ~BoolLiteralExp();
+        bool getBoolValue()const;
+        virtual Value Excute() const  override;
     private:
         struct Impl;
         Impl* pImpl;

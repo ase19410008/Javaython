@@ -4,20 +4,26 @@ namespace ore {
 	enum class StatementType {
 		nullStm,
 		expressionStm,
+		blockStm,
+		ifStm,
 		printStm,
 		stmTypeCount
 	};
 
 	enum class SmtResType {
 		voidType,
+		breakType,
+		returnType,
 	};
 
 	struct SmtRes {
 		SmtResType m_Type;
 		Value m_RetValue;
+		bool m_CaseExec;
 		SmtRes() :
 			m_Type(SmtResType::voidType),
-			m_RetValue(){}
+			m_RetValue(),
+			m_CaseExec(false){}
 	};
 
 	class StmExBase : public ObjBase {
@@ -51,6 +57,8 @@ namespace ore {
 		void setNext(StatementList* next);
 		virtual SmtRes Excute() const override;
 		// StatementType getType() const;
+		SmtRes ExcuteFromCase(Value val) const;
+		SmtRes ExcuteFromDefault() const;
 	private:
 		struct Impl;
 		Impl* pImpl;
@@ -63,6 +71,56 @@ namespace ore {
 		virtual ~ExpressionStm() {}
 		const Expression* getExp() const;
 		virtual SmtRes Excute() const override;
+	private:
+		struct Impl;
+		Impl* pImpl;
+	};
+
+	class IfStm : public Statement {
+	public:
+		IfStm(const Expression* condition, const Statement* stm);
+		virtual ~IfStm() {}
+		const Expression* getCondition() const;
+		const Statement* getStatement() const;
+		virtual SmtRes Excute() const override;
+	private:
+		struct Impl;
+		Impl* pImpl;
+	};
+
+	class CaseStm : public Statement {
+	public:
+		CaseStm(const Expression* exp, const Statement* stm);
+		virtual ~CaseStm() {}
+		const Expression* getExp() const;
+		Value getExpExcute() const;
+		const Statement* getStatement() const;
+		virtual SmtRes Excute() const override;
+	private:
+		struct Impl;
+		Impl* pImpl;
+	};
+
+	class DefaultStm : public Statement {
+	public:
+		DefaultStm(const Statement* stm);
+		virtual ~DefaultStm() {}
+		const Statement* getStatement() const;
+		virtual SmtRes Excute() const override;
+	private:
+		struct Impl;
+		Impl* pImpl;
+	};
+
+	class BlockStm : public Statement {
+	public:
+		BlockStm(StatementList* stml);
+		BlockStm();
+		virtual ~BlockStm() {}
+		const StatementList* getStatementList() const;
+		virtual SmtRes Excute() const override;
+		SmtRes ExcuteFromCase(Value val) const;
+		SmtRes ExcuteFromDefault() const;
 	private:
 		struct Impl;
 		Impl* pImpl;

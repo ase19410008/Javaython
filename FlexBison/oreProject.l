@@ -13,6 +13,12 @@ int yywrap(void){ return 1; }
 %s STR_LITERAL_ST_S
 %%
 <INITIAL>{
+    "true" return TRUE_T;
+    "if" return IF;
+    "("  return LP;
+    ")"  return RP;
+    "{"  return LC;
+    "}"  return RC;
     ";"     return SEMICOLON;
     "*=" return MULASS;
     "/=" return DIVASS;

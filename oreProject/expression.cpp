@@ -35,6 +35,31 @@ namespace ore {
         return pImpl->m_ExpType;
     }
 
+    struct BoolLiteralExp::Impl {
+        int m_BoolValue;
+    };
+
+    BoolLiteralExp::BoolLiteralExp(bool b)
+        :Expression(ExpressionType::boolLiteralExp),
+        pImpl(new Impl)
+    {
+        pImpl->m_BoolValue = b;
+    }
+
+    BoolLiteralExp::~BoolLiteralExp() {
+        delete pImpl;
+    }
+
+
+    bool BoolLiteralExp::getBoolValue()const {
+        return pImpl->m_BoolValue;
+    }
+
+    Value BoolLiteralExp::Excute() const {
+        setRuntimeLineNumber();
+        return Value(pImpl->m_BoolValue);
+    }
+
     struct IntLiteralExp::Impl {
         int m_IntValue;
     };

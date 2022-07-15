@@ -66,6 +66,7 @@ namespace ore {
 		string m_LiteralTemp;
 		Value m_TempVal;
 		Root* m_Root;
+		shared_ptr<RuntimeObject> m_CurrentRuntime;
 		shared_ptr<RuntimeObject> m_RootRuntime;
 		map<int, string> m_ErrMap;
 		bool m_IsWorningOut;
@@ -140,7 +141,8 @@ namespace ore {
 
 	void Interpreter::Exec() const {
 		if (pImpl->m_Root) {
-			pImpl->m_RootRuntime = make_shared<RuntimeObject>(nullptr);
+			pImpl->m_CurrentRuntime = make_shared<RuntimeObject>(nullptr);
+			pImpl->m_RootRuntime = pImpl->m_CurrentRuntime;
 			pImpl->m_Root->Excute();
 		}
 		else {
@@ -186,6 +188,12 @@ namespace ore {
 	Expression* Interpreter::createVariableExp(const char* ident) {
 		string str = clampToken(ident);
 		auto ptr = new VariableExp(str.c_str());
+		pImpl->m_ObjectPool.push_back(ptr);
+		return ptr;
+	}
+
+	Expression* Interpreter::createBoolLiteralExp(bool b) {
+		auto ptr = new BoolLiteralExp(b);
 		pImpl->m_ObjectPool.push_back(ptr);
 		return ptr;
 	}
@@ -268,6 +276,19 @@ namespace ore {
 		else {
 			pImpl->m_RootRuntime->m_VariableMap[key] = Value("");
 			return pImpl->m_RootRuntime->m_VariableMap[key];
+		}
+	}
+
+	void Interpreter::pushRuntime(bool IsFunc) {
+		pImpl->m_CurrentRuntime->m_Child = make_shared<RuntimeObject>(pImpl->m_CurrentRuntime, IsFunc);
+		pImpl->m_CurrentRuntime = pImpl->m_CurrentRuntime->m_Child;
+	}
+
+	void Interpreter::popRuntime() {
+		auto parPtr = pImpl->m_CurrentRuntime->m_Parent.lock();
+		if (parPtr) {
+			pImpl->m_CurrentRuntime = parPtr;
+			pImpl->m_CurrentRuntime->m_Child.reset();
 		}
 	}
 

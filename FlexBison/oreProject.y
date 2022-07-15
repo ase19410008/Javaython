@@ -22,9 +22,10 @@ int yyerror(char const *str) {
     ore::Root* root;
 }
 %token <fixedString> IDENTIFIER
-%token <expression> INT_LITERAL DOUBLE_LITERAL STR_LITERAL
-%token SEMICOLON ADD SUB MUL DIV MOD CR 
+%token <expression> TRUE_T INT_LITERAL DOUBLE_LITERAL STR_LITERAL
+%token LP RP LC RC SEMICOLON ADD SUB MUL DIV MOD CR 
 %token MULASS DIVASS MODASS ADDASS SUBASS ASS PRINTN PRINT EXPO
+%token IF
 %right ASS
 %right ADDASS SUBASS
 %right MULASS DIVASS MODASS
@@ -33,7 +34,8 @@ int yyerror(char const *str) {
 %type <expression> constart_expression identifier_expression
 %type <expression> primary_expression mul_expression add_expression
 %type <expression> assign_expression expression
-%type <statement> expression_statement internal_statement statement
+%type <statement> expression_statement compound_statement internal_statement statement
+%type <statement> selection_statement
 %type <statementList> statement_list
 %type <root> root
 %%
@@ -55,6 +57,8 @@ statement_list
     ;
 statement
     : expression_statement
+    | compound_statement
+    | selection_statement
     | internal_statement
     ;
 expression_statement
@@ -66,6 +70,23 @@ expression_statement
     {
         $$ = ore::Interpreter::getInp()->createStatement<ore::ExpressionStm>($1);
     }
+    ;
+compound_statement
+    : LC RC
+    {
+        $$ = ore::Interpreter::getInp()->createStatement<ore::BlockStm>();
+    }
+    | LC statement_list RC
+    {
+        $$ = ore::Interpreter::getInp()->createStatement<ore::BlockStm>($2);
+    }
+    ;
+selection_statement
+    : IF LP expression RP statement
+    {
+        $$ = ore::Interpreter::getInp()->createStatement<ore::IfStm>($3, $5);
+    }
+    ;
 internal_statement
     : PRINTN expression SEMICOLON
     {
@@ -159,6 +180,10 @@ constart_expression
     | INT_LITERAL
     {
         $$ = $1;
+    }
+    | TRUE_T
+    {
+        $$ = ore::Interpreter::getInp()->createBoolLiteralExp(true);
     }
     ;
 %%

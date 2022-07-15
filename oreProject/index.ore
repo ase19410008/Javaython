@@ -1,7 +1,7 @@
 a = "abc";
-output a;
-output "hello
-world!!";
+@@ output a;
+@@ output "hello
+@@ world!!";
 
 @@ output 12 += 2;
 @@ output 12 %= 2; error 右辺が変数の場合のみ動作
@@ -9,8 +9,12 @@ world!!";
 
 
 x = 5;
-x += 2;
-output x %= 2;
+@@ x += 2;
+@@ output x %= 2;
+
+if (true) {
+	output "true";
+}
 
 @@ ����������
 
