@@ -5,7 +5,8 @@ namespace ore {
 		nullStm,
 		expressionStm,
 		printStm,
-		stmTypeCount
+		stmTypeCount,
+		IfStm,
 	};
 
 	enum class SmtResType {
@@ -76,6 +77,21 @@ namespace ore {
 		bool getNflg() const;
 		virtual SmtRes Excute() const override;
 	private:
+		struct Impl;
+		Impl* pImpl;
+	};
+	//-----------------------------------------------------
+	//if分クラス
+	//-----------------------------------------------------
+	class IfStm : public Statement {
+	public:
+		IfStm(const Expression* condition, const Statement* stm);
+		virtual ~IfStm();
+		const Expression* getCondition()const;
+		const Statement* getStatement()const;
+		virtual SmtRes Excute() const  override;
+	private:
+		// pImplイディオム
 		struct Impl;
 		Impl* pImpl;
 	};

@@ -24,7 +24,8 @@ int yyerror(char const *str) {
 %token <fixedString> IDENTIFIER
 %token <expression> INT_LITERAL DOUBLE_LITERAL STR_LITERAL
 %token SEMICOLON ADD SUB MUL DIV CR 
-%token MULASS DIVASS ADDASS SUBASS ASS PRINTN PRINT EXPO
+%token MULASS DIVASS ADDASS SUBASS ASS PRINTN PRINT EXPO IF
+%token LP RP IND
 %right ASS
 %right ADDASS SUBASS
 %right MULASS DIVASS
@@ -58,13 +59,19 @@ statement
     | internal_statement
     ;
 expression_statement
-    : SEMICOLON
+    : SEMICOLON IND
     {
         $$ = ore::Interpreter::getInp()->createStatement<ore::ExpressionStm>();
     }
     | expression SEMICOLON
     {
         $$ = ore::Interpreter::getInp()->createStatement<ore::ExpressionStm>($1);
+    }
+    ;
+selection_statement
+    : IF LP expression RP statement
+    {
+        $$ = ore::Interpreter::getInp()->createStatement<ore::IfStm>($3,$5);
     }
 internal_statement
     : PRINTN expression SEMICOLON

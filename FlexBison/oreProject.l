@@ -23,6 +23,10 @@ int yywrap(void){ return 1; }
     "*"     return MUL;
     "/"     return DIV;
     "**"    return EXPO;
+    "if"    return IF;
+    "("     rerurn LP;
+    ")"     return RP;
+    "/\"    return IND;
     "=" return ASS;
     "output"     return PRINTN;
     "p"     return PRINT;

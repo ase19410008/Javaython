@@ -159,4 +159,46 @@ namespace ore {
 		}
 		return SmtRes();
 	}
+
+
+	//--------------------------------------------------------------------------------------
+    ///  if•¶ƒNƒ‰ƒX
+    //--------------------------------------------------------------------------------------
+    struct IfStm::Impl {
+        const Expression* m_Condition;
+        const Statement* m_Statement;
+    };
+
+    IfStm::IfStm(const Expression* condition, const Statement* stm)
+        : Statement(StatementType::IfStm),
+        pImpl(new Impl)
+    {
+        pImpl->m_Condition = condition;
+        pImpl->m_Statement = stm;
+    }
+
+    IfStm::~IfStm() {
+        delete pImpl;
+
+    }
+
+    const Expression* IfStm::getCondition()const {
+        return pImpl->m_Condition;
+    }
+
+    const Statement* IfStm::getStatement()const {
+        return pImpl->m_Statement;
+    }
+
+    SmtRes IfStm::Excute() const {
+        setRuntimeLineNumber();
+        auto val = getCondition()->Excute();
+        if (val.getBool()) {
+            return getStatement()->Excute();
+        }
+        return SmtRes();
+    }
+
+
+
 }
