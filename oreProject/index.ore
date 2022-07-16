@@ -7,6 +7,10 @@ a = "abc";
 @@ output 12 %= 2; error 右辺が変数の場合のみ動作
 @@ output 1 ** 100;
 
+test1 = 123;
+test1 &= "abc";
+
+output "1: " & test1;
 
 x = 5;
 @@ x += 2;

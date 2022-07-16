@@ -27,7 +27,7 @@ int yyerror(char const *str) {
 %token MULASS DIVASS MODASS ADDASS SUBASS ASS PRINTN PRINT EXPO
 %token IF
 %right ASS
-%right ADDASS SUBASS
+%right ADDASS SUBASS AMPASS
 %right MULASS DIVASS MODASS
 %left ADD SUB
 %left MUL DIV MOD
@@ -123,6 +123,10 @@ assign_expression
     {
         $$ = ore::Interpreter::getInp()->createToAssExp($1, $3, ore::ExpressionType::subAssExp);
     }
+    | identifier_expression AMPASS assign_expression
+    {
+        $$ = ore::Interpreter::getInp()->createToAssExp($1, $3, ore::ExpressionType::ampAssExp);
+    }
     | identifier_expression ASS assign_expression
     {
         $$ = ore::Interpreter::getInp()->createAssExp($1, $3);
@@ -167,6 +171,10 @@ add_expression
     | add_expression SUB mul_expression
     {
         $$ = ore::Interpreter::getInp()->createBinaryExp($1, $3, ore::ExpressionType::subExp);
+    }
+    | add_expression AMP mul_expression
+    {
+        $$ = ore::Interpreter::getInp()->createBinaryExp($1, $3, ore::ExpressionType::ampExp);
     }
     ;
 mul_expression

@@ -1291,6 +1291,14 @@ yyreduce:
   case 23: /* assign_expression: identifier_expression ASS assign_expression  */
 #line 127 "oreProject.y"
     {
+        (yyval.expression) = ore::Interpreter::getInp()->createToAssExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::ampAssExp);
+    }
+#line 1234 "oreProject.tab.cpp"
+    break;
+
+  case 19: /* assign_expression: identifier_expression ASS assign_expression  */
+#line 109 "oreProject.y"
+    {
         (yyval.expression) = ore::Interpreter::getInp()->createAssExp((yyvsp[-2].expression), (yyvsp[0].expression));
     }
 #line 1297 "oreProject.tab.cpp"

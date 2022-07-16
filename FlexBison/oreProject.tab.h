@@ -109,7 +109,7 @@ union YYSTYPE
     ore::StatementList* statementList;
     ore::Root* root;
 
-#line 113 "oreProject.tab.h"
+#line 113 "oreProject.tab.h
 
 };
 typedef union YYSTYPE YYSTYPE;
