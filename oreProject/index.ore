@@ -12,8 +12,17 @@ x = 5;
 @@ x += 2;
 @@ output x %= 2;
 
-if (x == 5) {
-	output "true";
+if (1 < 2) {
+	output "lt";
+}
+if (2 > 1) {
+	output "rt";
+}
+if (1 <= 1) {
+	output "le";
+}
+if (1 >= 1) {
+	output "ge";
 }
 
 @@ ����������

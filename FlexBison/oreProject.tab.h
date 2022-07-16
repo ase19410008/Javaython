@@ -71,23 +71,28 @@ extern int yydebug;
     LC = 266,                      /* LC  */
     RC = 267,                      /* RC  */
     EQ = 268,                      /* EQ  */
-    SEMICOLON = 269,               /* SEMICOLON  */
-    ADD = 270,                     /* ADD  */
-    SUB = 271,                     /* SUB  */
-    MUL = 272,                     /* MUL  */
-    DIV = 273,                     /* DIV  */
-    MOD = 274,                     /* MOD  */
-    CR = 275,                      /* CR  */
-    MULASS = 276,                  /* MULASS  */
-    DIVASS = 277,                  /* DIVASS  */
-    MODASS = 278,                  /* MODASS  */
-    ADDASS = 279,                  /* ADDASS  */
-    SUBASS = 280,                  /* SUBASS  */
-    ASS = 281,                     /* ASS  */
-    PRINTN = 282,                  /* PRINTN  */
-    PRINT = 283,                   /* PRINT  */
-    EXPO = 284,                    /* EXPO  */
-    IF = 285                       /* IF  */
+    NE = 269,                      /* NE  */
+    LE = 270,                      /* LE  */
+    GE = 271,                      /* GE  */
+    LT = 272,                      /* LT  */
+    GT = 273,                      /* GT  */
+    SEMICOLON = 274,               /* SEMICOLON  */
+    ADD = 275,                     /* ADD  */
+    SUB = 276,                     /* SUB  */
+    MUL = 277,                     /* MUL  */
+    DIV = 278,                     /* DIV  */
+    MOD = 279,                     /* MOD  */
+    CR = 280,                      /* CR  */
+    MULASS = 281,                  /* MULASS  */
+    DIVASS = 282,                  /* DIVASS  */
+    MODASS = 283,                  /* MODASS  */
+    ADDASS = 284,                  /* ADDASS  */
+    SUBASS = 285,                  /* SUBASS  */
+    ASS = 286,                     /* ASS  */
+    PRINTN = 287,                  /* PRINTN  */
+    PRINT = 288,                   /* PRINT  */
+    EXPO = 289,                    /* EXPO  */
+    IF = 290                       /* IF  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -104,7 +109,7 @@ union YYSTYPE
     ore::StatementList* statementList;
     ore::Root* root;
 
-#line 108 "oreProject.tab.h"
+#line 113 "oreProject.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

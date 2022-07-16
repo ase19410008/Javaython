@@ -21,6 +21,11 @@ namespace ore {
         divExp,
         modExp,
         eqExp,
+        neExp,
+        gtExp,
+        geExp,
+        ltExp,
+        leExp,
         printExp,
         expTypeCount,
         expoExp

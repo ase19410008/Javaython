@@ -27,6 +27,11 @@ int yywrap(void){ return 1; }
     "+=" return ADDASS;
     "-=" return SUBASS;
     "==" return EQ;
+    "!=" return NE;
+    "<=" return LE;
+    ">=" return GE;
+    "<" return LT;
+    ">" return GT;
     "+"     return ADD;
     "-"     return SUB;
     "*"     return MUL;

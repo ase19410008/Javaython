@@ -342,13 +342,26 @@ namespace ore {
     Value RelationalExp::Excute() const {
         setRuntimeLineNumber();
         switch (getType()) {
-            {
-        case ExpressionType::eqExp:
-            return Value(pImpl->m_Left->Excute() == pImpl->m_Right->Excute());
-            break;
+            case ExpressionType::eqExp:
+                return Value(pImpl->m_Left->Excute() == pImpl->m_Right->Excute());
+                break;
+            case ExpressionType::neExp:
+                return Value(pImpl->m_Left->Excute() != pImpl->m_Right->Excute());
+                break;
+            case ExpressionType::ltExp:
+                return Value(pImpl->m_Left->Excute() < pImpl->m_Right->Excute());
+                break;
+            case ExpressionType::gtExp:
+                return Value(pImpl->m_Left->Excute() > pImpl->m_Right->Excute());
+                break;
+            case ExpressionType::leExp:
+                return Value(pImpl->m_Left->Excute() <= pImpl->m_Right->Excute());
+                break;
+            case ExpressionType::geExp:
+                return Value(pImpl->m_Left->Excute() >= pImpl->m_Right->Excute());
+                break;
             }
             Interpreter::getInp()->runtimeExit(2010);
             return Value();
-        }
     }
 }

@@ -23,7 +23,7 @@ int yyerror(char const *str) {
 }
 %token <fixedString> IDENTIFIER
 %token <expression> TRUE_T FALSE_T INT_LITERAL DOUBLE_LITERAL STR_LITERAL
-%token LP RP LC RC EQ SEMICOLON ADD SUB MUL DIV MOD CR 
+%token LP RP LC RC EQ NE LE GE LT GT SEMICOLON ADD SUB MUL DIV MOD CR 
 %token MULASS DIVASS MODASS ADDASS SUBASS ASS PRINTN PRINT EXPO
 %token IF
 %right ASS
@@ -134,9 +134,29 @@ equality_expression
     {
         $$ = ore::Interpreter::getInp()->createRelationalExp($1, $3, ore::ExpressionType::eqExp);
     }
+    | equality_expression NE relational_expression
+    {
+        $$ = ore::Interpreter::getInp()->createRelationalExp($1, $3, ore::ExpressionType::neExp);
+    }
     ;
 relational_expression
     : add_expression
+    | relational_expression LT add_expression
+    {
+        $$ = ore::Interpreter::getInp()->createRelationalExp($1, $3, ore::ExpressionType::ltExp);
+    }
+    | relational_expression GT add_expression
+    {
+        $$ = ore::Interpreter::getInp()->createRelationalExp($1, $3, ore::ExpressionType::gtExp);
+    }
+    | relational_expression LE add_expression
+    {
+        $$ = ore::Interpreter::getInp()->createRelationalExp($1, $3, ore::ExpressionType::leExp);
+    }
+    | relational_expression GE add_expression
+    {
+        $$ = ore::Interpreter::getInp()->createRelationalExp($1, $3, ore::ExpressionType::geExp);
+    }
     ;
 add_expression
     : mul_expression
