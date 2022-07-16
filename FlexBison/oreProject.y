@@ -22,8 +22,8 @@ int yyerror(char const *str) {
     ore::Root* root;
 }
 %token <fixedString> IDENTIFIER
-%token <expression> TRUE_T INT_LITERAL DOUBLE_LITERAL STR_LITERAL
-%token LP RP LC RC SEMICOLON ADD SUB MUL DIV MOD CR 
+%token <expression> TRUE_T FALSE_T INT_LITERAL DOUBLE_LITERAL STR_LITERAL
+%token LP RP LC RC EQ SEMICOLON ADD SUB MUL DIV MOD CR 
 %token MULASS DIVASS MODASS ADDASS SUBASS ASS PRINTN PRINT EXPO
 %token IF
 %right ASS
@@ -33,6 +33,7 @@ int yyerror(char const *str) {
 %left MUL DIV MOD
 %type <expression> constart_expression identifier_expression
 %type <expression> primary_expression mul_expression add_expression
+%type <expression> relational_expression equality_expression
 %type <expression> assign_expression expression
 %type <statement> expression_statement compound_statement internal_statement statement
 %type <statement> selection_statement
@@ -101,7 +102,7 @@ expression
     : assign_expression
     ;
 assign_expression
-    : add_expression
+    : equality_expression
     | identifier_expression MULASS assign_expression
     {
         $$ = ore::Interpreter::getInp()->createToAssExp($1, $3, ore::ExpressionType::mulAssExp);
@@ -126,6 +127,16 @@ assign_expression
     {
         $$ = ore::Interpreter::getInp()->createAssExp($1, $3);
     }
+    ;
+equality_expression
+    : relational_expression
+    | equality_expression EQ relational_expression
+    {
+        $$ = ore::Interpreter::getInp()->createRelationalExp($1, $3, ore::ExpressionType::eqExp);
+    }
+    ;
+relational_expression
+    : add_expression
     ;
 add_expression
     : mul_expression
@@ -184,6 +195,10 @@ constart_expression
     | TRUE_T
     {
         $$ = ore::Interpreter::getInp()->createBoolLiteralExp(true);
+    }
+    | FALSE_T
+    {
+        $$ = ore::Interpreter::getInp()->createBoolLiteralExp(false);
     }
     ;
 %%

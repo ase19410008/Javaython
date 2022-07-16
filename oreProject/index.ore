@@ -12,7 +12,7 @@ x = 5;
 @@ x += 2;
 @@ output x %= 2;
 
-if (true) {
+if (x == 5) {
 	output "true";
 }
 

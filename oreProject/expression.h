@@ -20,6 +20,7 @@ namespace ore {
         mulExp,
         divExp,
         modExp,
+        eqExp,
         printExp,
         expTypeCount,
         expoExp
@@ -132,4 +133,15 @@ namespace ore {
         Impl* pImpl;
     };
 
+    class RelationalExp : public Expression {
+    public:
+        RelationalExp(ExpressionType type, const Expression* left, const Expression* right);
+        virtual ~RelationalExp();
+        const Expression* getLeft()const;
+        const Expression* getRight()const;
+        virtual Value Excute() const  override;
+    private:
+        struct Impl;
+        Impl* pImpl;
+    };
 }

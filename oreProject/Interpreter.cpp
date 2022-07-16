@@ -233,6 +233,12 @@ namespace ore {
 		return ptr;
 	}
 
+	Expression* Interpreter::createRelationalExp(const Expression* left, const Expression* right, ExpressionType t) {
+		auto ptr = new RelationalExp(t, left, right);
+		pImpl->m_ObjectPool.push_back(ptr);
+		return ptr;
+	}
+
 	Expression* Interpreter::createAssExp(const Expression* ident, const Expression* right) {
 		auto ptr = new AssignExp(ident, right);
 		pImpl->m_ObjectPool.push_back(ptr);

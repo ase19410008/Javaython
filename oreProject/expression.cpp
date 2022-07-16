@@ -314,4 +314,41 @@ namespace ore {
         }
     }
 
+    struct RelationalExp::Impl {
+        const Expression* m_Left;
+        const Expression* m_Right;
+    };
+
+    RelationalExp::RelationalExp(ExpressionType type, const Expression* left, const Expression* right)
+        :Expression(type),
+        pImpl(new Impl)
+    {
+        pImpl->m_Left = left;
+        pImpl->m_Right = right;
+    }
+
+    RelationalExp::~RelationalExp() {
+        delete pImpl;
+    }
+
+    const Expression* RelationalExp::getLeft() const {
+        return pImpl->m_Left;
+    }
+
+    const Expression* RelationalExp::getRight() const {
+        return pImpl->m_Right;
+    }
+
+    Value RelationalExp::Excute() const {
+        setRuntimeLineNumber();
+        switch (getType()) {
+            {
+        case ExpressionType::eqExp:
+            return Value(pImpl->m_Left->Excute() == pImpl->m_Right->Excute());
+            break;
+            }
+            Interpreter::getInp()->runtimeExit(2010);
+            return Value();
+        }
+    }
 }

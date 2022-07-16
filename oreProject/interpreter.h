@@ -34,6 +34,7 @@ namespace ore {
 		void addStringLiteral(char ext);
 		Expression* createStringLiteralExp();
 		Expression* createBinaryExp(const Expression* left, const Expression* right, ExpressionType t);
+		Expression* createRelationalExp(const Expression* left, const Expression* right, ExpressionType t);
 		Expression* createAssExp(const Expression* ident, const Expression* right);
 		Expression* createToAssExp(const Expression* ident, const Expression* right, ExpressionType t);
 

@@ -14,6 +14,7 @@ int yywrap(void){ return 1; }
 %%
 <INITIAL>{
     "true" return TRUE_T;
+    "false" return FALSE_T;
     "if" return IF;
     "("  return LP;
     ")"  return RP;
@@ -25,6 +26,7 @@ int yywrap(void){ return 1; }
     "%=" return MODASS;
     "+=" return ADDASS;
     "-=" return SUBASS;
+    "==" return EQ;
     "+"     return ADD;
     "-"     return SUB;
     "*"     return MUL;
