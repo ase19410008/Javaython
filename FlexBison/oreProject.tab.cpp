@@ -129,39 +129,41 @@ enum yysymbol_kind_t
   YYSYMBOL_LT = 17,                        /* LT  */
   YYSYMBOL_GT = 18,                        /* GT  */
   YYSYMBOL_SEMICOLON = 19,                 /* SEMICOLON  */
-  YYSYMBOL_ADD = 20,                       /* ADD  */
-  YYSYMBOL_SUB = 21,                       /* SUB  */
-  YYSYMBOL_MUL = 22,                       /* MUL  */
-  YYSYMBOL_DIV = 23,                       /* DIV  */
-  YYSYMBOL_MOD = 24,                       /* MOD  */
-  YYSYMBOL_CR = 25,                        /* CR  */
-  YYSYMBOL_MULASS = 26,                    /* MULASS  */
-  YYSYMBOL_DIVASS = 27,                    /* DIVASS  */
-  YYSYMBOL_MODASS = 28,                    /* MODASS  */
-  YYSYMBOL_ADDASS = 29,                    /* ADDASS  */
-  YYSYMBOL_SUBASS = 30,                    /* SUBASS  */
-  YYSYMBOL_ASS = 31,                       /* ASS  */
-  YYSYMBOL_PRINTN = 32,                    /* PRINTN  */
-  YYSYMBOL_PRINT = 33,                     /* PRINT  */
-  YYSYMBOL_EXPO = 34,                      /* EXPO  */
-  YYSYMBOL_IF = 35,                        /* IF  */
-  YYSYMBOL_YYACCEPT = 36,                  /* $accept  */
-  YYSYMBOL_root = 37,                      /* root  */
-  YYSYMBOL_statement_list = 38,            /* statement_list  */
-  YYSYMBOL_statement = 39,                 /* statement  */
-  YYSYMBOL_expression_statement = 40,      /* expression_statement  */
-  YYSYMBOL_compound_statement = 41,        /* compound_statement  */
-  YYSYMBOL_selection_statement = 42,       /* selection_statement  */
-  YYSYMBOL_internal_statement = 43,        /* internal_statement  */
-  YYSYMBOL_expression = 44,                /* expression  */
-  YYSYMBOL_assign_expression = 45,         /* assign_expression  */
-  YYSYMBOL_equality_expression = 46,       /* equality_expression  */
-  YYSYMBOL_relational_expression = 47,     /* relational_expression  */
-  YYSYMBOL_add_expression = 48,            /* add_expression  */
-  YYSYMBOL_mul_expression = 49,            /* mul_expression  */
-  YYSYMBOL_primary_expression = 50,        /* primary_expression  */
-  YYSYMBOL_identifier_expression = 51,     /* identifier_expression  */
-  YYSYMBOL_constart_expression = 52        /* constart_expression  */
+  YYSYMBOL_AMP = 20,                       /* AMP  */
+  YYSYMBOL_ADD = 21,                       /* ADD  */
+  YYSYMBOL_SUB = 22,                       /* SUB  */
+  YYSYMBOL_MUL = 23,                       /* MUL  */
+  YYSYMBOL_DIV = 24,                       /* DIV  */
+  YYSYMBOL_MOD = 25,                       /* MOD  */
+  YYSYMBOL_CR = 26,                        /* CR  */
+  YYSYMBOL_MULASS = 27,                    /* MULASS  */
+  YYSYMBOL_DIVASS = 28,                    /* DIVASS  */
+  YYSYMBOL_MODASS = 29,                    /* MODASS  */
+  YYSYMBOL_ADDASS = 30,                    /* ADDASS  */
+  YYSYMBOL_SUBASS = 31,                    /* SUBASS  */
+  YYSYMBOL_AMPASS = 32,                    /* AMPASS  */
+  YYSYMBOL_ASS = 33,                       /* ASS  */
+  YYSYMBOL_PRINTN = 34,                    /* PRINTN  */
+  YYSYMBOL_PRINT = 35,                     /* PRINT  */
+  YYSYMBOL_EXPO = 36,                      /* EXPO  */
+  YYSYMBOL_IF = 37,                        /* IF  */
+  YYSYMBOL_YYACCEPT = 38,                  /* $accept  */
+  YYSYMBOL_root = 39,                      /* root  */
+  YYSYMBOL_statement_list = 40,            /* statement_list  */
+  YYSYMBOL_statement = 41,                 /* statement  */
+  YYSYMBOL_expression_statement = 42,      /* expression_statement  */
+  YYSYMBOL_compound_statement = 43,        /* compound_statement  */
+  YYSYMBOL_selection_statement = 44,       /* selection_statement  */
+  YYSYMBOL_internal_statement = 45,        /* internal_statement  */
+  YYSYMBOL_expression = 46,                /* expression  */
+  YYSYMBOL_assign_expression = 47,         /* assign_expression  */
+  YYSYMBOL_equality_expression = 48,       /* equality_expression  */
+  YYSYMBOL_relational_expression = 49,     /* relational_expression  */
+  YYSYMBOL_add_expression = 50,            /* add_expression  */
+  YYSYMBOL_mul_expression = 51,            /* mul_expression  */
+  YYSYMBOL_primary_expression = 52,        /* primary_expression  */
+  YYSYMBOL_identifier_expression = 53,     /* identifier_expression  */
+  YYSYMBOL_constart_expression = 54        /* constart_expression  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -471,19 +473,19 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  33
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   103
+#define YYLAST   112
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  36
+#define YYNTOKENS  38
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  17
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  47
+#define YYNRULES  49
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  79
+#define YYNSTATES  83
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   290
+#define YYMAXUTOK   292
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -526,7 +528,7 @@ static const yytype_int8 yytranslate[] =
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35
+      35,    36,    37
 };
 
 #if YYDEBUG
@@ -535,9 +537,9 @@ static const yytype_uint8 yyrline[] =
 {
        0,    44,    44,    50,    54,    60,    61,    62,    63,    66,
       70,    76,    80,    86,    92,    96,   102,   105,   106,   110,
-     114,   118,   122,   126,   132,   133,   137,   143,   144,   148,
-     152,   156,   162,   163,   167,   173,   174,   178,   182,   186,
-     193,   194,   195,   201,   207,   211,   215,   219
+     114,   118,   122,   126,   130,   136,   137,   141,   147,   148,
+     152,   156,   160,   166,   167,   171,   175,   181,   182,   186,
+     190,   194,   201,   202,   203,   209,   215,   219,   223,   227
 };
 #endif
 
@@ -555,10 +557,10 @@ static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "IDENTIFIER", "TRUE_T",
   "FALSE_T", "INT_LITERAL", "DOUBLE_LITERAL", "STR_LITERAL", "LP", "RP",
-  "LC", "RC", "EQ", "NE", "LE", "GE", "LT", "GT", "SEMICOLON", "ADD",
-  "SUB", "MUL", "DIV", "MOD", "CR", "MULASS", "DIVASS", "MODASS", "ADDASS",
-  "SUBASS", "ASS", "PRINTN", "PRINT", "EXPO", "IF", "$accept", "root",
-  "statement_list", "statement", "expression_statement",
+  "LC", "RC", "EQ", "NE", "LE", "GE", "LT", "GT", "SEMICOLON", "AMP",
+  "ADD", "SUB", "MUL", "DIV", "MOD", "CR", "MULASS", "DIVASS", "MODASS",
+  "ADDASS", "SUBASS", "AMPASS", "ASS", "PRINTN", "PRINT", "EXPO", "IF",
+  "$accept", "root", "statement_list", "statement", "expression_statement",
   "compound_statement", "selection_statement", "internal_statement",
   "expression", "assign_expression", "equality_expression",
   "relational_expression", "add_expression", "mul_expression",
@@ -580,11 +582,11 @@ static const yytype_int16 yytoknum[] =
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
      275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
-     285,   286,   287,   288,   289,   290
+     285,   286,   287,   288,   289,   290,   291,   292
 };
 #endif
 
-#define YYPACT_NINF (-23)
+#define YYPACT_NINF (-26)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -598,14 +600,15 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      33,   -23,   -23,   -23,   -23,   -23,   -23,    -2,   -23,    79,
-      79,     2,    32,    33,   -23,   -23,   -23,   -23,   -23,    23,
-     -23,    -6,    38,     4,    35,   -23,    62,   -23,   -23,    15,
-      24,    26,    79,   -23,   -23,   -23,    79,    79,    79,    79,
-      79,    79,    79,    79,    79,    79,    79,    79,    79,    79,
-      79,    79,    79,    79,   -23,   -23,   -23,    36,    38,   -23,
-      38,     4,     4,     4,     4,    35,    35,   -23,   -23,   -23,
-     -23,   -23,   -23,   -23,   -23,   -23,   -23,    33,   -23
+      35,   -26,   -26,   -26,   -26,   -26,   -26,    -2,   -26,    98,
+      98,     6,    24,    35,   -26,   -26,   -26,   -26,   -26,    25,
+     -26,    -6,    13,    87,    37,   -26,    60,   -26,   -26,    15,
+      26,    28,    98,   -26,   -26,   -26,    98,    98,    98,    98,
+      98,    98,    98,    98,    98,    98,    98,    98,    98,    98,
+      98,    98,    98,    98,    98,    98,   -26,   -26,   -26,    27,
+      13,   -26,    13,    87,    87,    87,    87,    37,    37,    37,
+     -26,   -26,   -26,   -26,   -26,   -26,   -26,   -26,   -26,   -26,
+     -26,    35,   -26
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -613,21 +616,22 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,    43,    46,    47,    45,    44,    42,     0,     9,     0,
+       0,    45,    48,    49,    47,    46,    44,     0,     9,     0,
        0,     0,     0,     2,     3,     5,     6,     7,     8,     0,
-      16,    17,    24,    27,    32,    35,    40,    41,    11,     0,
+      16,    17,    25,    28,    33,    37,    42,    43,    11,     0,
        0,     0,     0,     1,     4,    10,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,    12,    14,    15,     0,    25,    40,
-      26,    30,    31,    28,    29,    33,    34,    36,    37,    38,
-      39,    18,    19,    20,    21,    22,    23,     0,    13
+       0,     0,     0,     0,     0,     0,    12,    14,    15,     0,
+      26,    42,    27,    31,    32,    29,    30,    36,    34,    35,
+      38,    39,    40,    41,    18,    19,    20,    21,    22,    23,
+      24,     0,    13
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -23,   -23,    42,   -13,   -23,   -23,   -23,   -23,     3,    46,
-     -23,   -22,    22,   -14,    56,    34,   -23
+     -26,   -26,    41,   -13,   -26,   -26,   -26,   -26,     4,    45,
+     -26,   -25,    17,    68,    18,    38,   -26
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -643,55 +647,58 @@ static const yytype_int8 yydefgoto[] =
 static const yytype_int8 yytable[] =
 {
       34,     1,     2,     3,     4,     5,     6,    36,    37,     7,
-      28,    32,    30,    31,    58,    60,    34,     8,     1,     2,
-       3,     4,     5,     6,    42,    43,     7,    54,    65,    66,
-       9,    10,    33,    11,     8,    57,     1,     2,     3,     4,
-       5,     6,    35,    55,     7,    56,    77,     9,    10,    29,
-      11,     0,     8,    38,    39,    40,    41,    44,    45,    46,
-      61,    62,    63,    64,    78,     9,    10,     0,    11,    47,
-      59,    59,    59,    59,    59,    59,    59,    59,    59,    59,
-      59,    59,     1,     2,     3,     4,     5,     6,    48,    49,
-      50,    51,    52,    53,    71,    72,    73,    74,    75,    76,
-      67,    68,    69,    70
+      28,    60,    62,    30,    31,    32,    34,     8,     1,     2,
+       3,     4,     5,     6,    33,     0,     7,    56,    38,    39,
+      40,    41,     9,    10,     8,    11,    59,    81,     1,     2,
+       3,     4,     5,     6,    35,    57,     7,    58,    29,     9,
+      10,     0,    11,     0,     8,    63,    64,    65,    66,     0,
+      45,    46,    47,    70,    71,    72,    73,     0,    82,     9,
+      10,     0,    11,    48,    61,    61,    61,    61,    61,    61,
+      61,    61,    61,    61,    61,    61,    61,    49,    50,    51,
+      52,    53,    54,    55,    74,    75,    76,    77,    78,    79,
+      80,     1,     2,     3,     4,     5,     6,    42,    43,    44,
+      67,    68,    69
 };
 
 static const yytype_int8 yycheck[] =
 {
       13,     3,     4,     5,     6,     7,     8,    13,    14,    11,
-      12,     9,     9,    10,    36,    37,    29,    19,     3,     4,
-       5,     6,     7,     8,    20,    21,    11,    12,    42,    43,
-      32,    33,     0,    35,    19,    32,     3,     4,     5,     6,
-       7,     8,    19,    19,    11,    19,    10,    32,    33,     7,
-      35,    -1,    19,    15,    16,    17,    18,    22,    23,    24,
-      38,    39,    40,    41,    77,    32,    33,    -1,    35,    34,
-      36,    37,    38,    39,    40,    41,    42,    43,    44,    45,
-      46,    47,     3,     4,     5,     6,     7,     8,    26,    27,
-      28,    29,    30,    31,    48,    49,    50,    51,    52,    53,
-      44,    45,    46,    47
+      12,    36,    37,     9,    10,     9,    29,    19,     3,     4,
+       5,     6,     7,     8,     0,    -1,    11,    12,    15,    16,
+      17,    18,    34,    35,    19,    37,    32,    10,     3,     4,
+       5,     6,     7,     8,    19,    19,    11,    19,     7,    34,
+      35,    -1,    37,    -1,    19,    38,    39,    40,    41,    -1,
+      23,    24,    25,    45,    46,    47,    48,    -1,    81,    34,
+      35,    -1,    37,    36,    36,    37,    38,    39,    40,    41,
+      42,    43,    44,    45,    46,    47,    48,    27,    28,    29,
+      30,    31,    32,    33,    49,    50,    51,    52,    53,    54,
+      55,     3,     4,     5,     6,     7,     8,    20,    21,    22,
+      42,    43,    44
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,     4,     5,     6,     7,     8,    11,    19,    32,
-      33,    35,    37,    38,    39,    40,    41,    42,    43,    44,
-      45,    46,    47,    48,    49,    50,    51,    52,    12,    38,
-      44,    44,     9,     0,    39,    19,    13,    14,    15,    16,
-      17,    18,    20,    21,    22,    23,    24,    34,    26,    27,
-      28,    29,    30,    31,    12,    19,    19,    44,    47,    51,
-      47,    48,    48,    48,    48,    49,    49,    50,    50,    50,
-      50,    45,    45,    45,    45,    45,    45,    10,    39
+       0,     3,     4,     5,     6,     7,     8,    11,    19,    34,
+      35,    37,    39,    40,    41,    42,    43,    44,    45,    46,
+      47,    48,    49,    50,    51,    52,    53,    54,    12,    40,
+      46,    46,     9,     0,    41,    19,    13,    14,    15,    16,
+      17,    18,    20,    21,    22,    23,    24,    25,    36,    27,
+      28,    29,    30,    31,    32,    33,    12,    19,    19,    46,
+      49,    53,    49,    50,    50,    50,    50,    51,    51,    51,
+      52,    52,    52,    52,    47,    47,    47,    47,    47,    47,
+      47,    10,    41
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    36,    37,    38,    38,    39,    39,    39,    39,    40,
-      40,    41,    41,    42,    43,    43,    44,    45,    45,    45,
-      45,    45,    45,    45,    46,    46,    46,    47,    47,    47,
-      47,    47,    48,    48,    48,    49,    49,    49,    49,    49,
-      50,    50,    50,    51,    52,    52,    52,    52
+       0,    38,    39,    40,    40,    41,    41,    41,    41,    42,
+      42,    43,    43,    44,    45,    45,    46,    47,    47,    47,
+      47,    47,    47,    47,    47,    48,    48,    48,    49,    49,
+      49,    49,    49,    50,    50,    50,    50,    51,    51,    51,
+      51,    51,    52,    52,    52,    53,    54,    54,    54,    54
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -699,9 +706,9 @@ static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     1,     2,     1,     1,     1,     1,     1,
        2,     2,     3,     5,     3,     3,     1,     1,     3,     3,
-       3,     3,     3,     3,     1,     3,     3,     1,     3,     3,
-       3,     3,     1,     3,     3,     1,     3,     3,     3,     3,
-       1,     1,     1,     1,     1,     1,     1,     1
+       3,     3,     3,     3,     3,     1,     3,     3,     1,     3,
+       3,     3,     3,     1,     3,     3,     3,     1,     3,     3,
+       3,     3,     1,     1,     1,     1,     1,     1,     1,     1
 };
 
 
@@ -1173,7 +1180,7 @@ yyreduce:
     {
         (yyval.root) = ore::Interpreter::getInp()->createRoot((yyvsp[0].statementList));
     }
-#line 1177 "oreProject.tab.cpp"
+#line 1184 "oreProject.tab.cpp"
     break;
 
   case 3: /* statement_list: statement  */
@@ -1181,7 +1188,7 @@ yyreduce:
     {
         (yyval.statementList) = ore::Interpreter::getInp()->createStatementList((yyvsp[0].statement));
     }
-#line 1185 "oreProject.tab.cpp"
+#line 1192 "oreProject.tab.cpp"
     break;
 
   case 4: /* statement_list: statement_list statement  */
@@ -1189,7 +1196,7 @@ yyreduce:
     {
         (yyval.statementList) = ore::Interpreter::getInp()->createStatementList((yyvsp[-1].statementList), (yyvsp[0].statement));
     }
-#line 1193 "oreProject.tab.cpp"
+#line 1200 "oreProject.tab.cpp"
     break;
 
   case 9: /* expression_statement: SEMICOLON  */
@@ -1197,7 +1204,7 @@ yyreduce:
     {
         (yyval.statement) = ore::Interpreter::getInp()->createStatement<ore::ExpressionStm>();
     }
-#line 1201 "oreProject.tab.cpp"
+#line 1208 "oreProject.tab.cpp"
     break;
 
   case 10: /* expression_statement: expression SEMICOLON  */
@@ -1205,7 +1212,7 @@ yyreduce:
     {
         (yyval.statement) = ore::Interpreter::getInp()->createStatement<ore::ExpressionStm>((yyvsp[-1].expression));
     }
-#line 1209 "oreProject.tab.cpp"
+#line 1216 "oreProject.tab.cpp"
     break;
 
   case 11: /* compound_statement: LC RC  */
@@ -1213,7 +1220,7 @@ yyreduce:
     {
         (yyval.statement) = ore::Interpreter::getInp()->createStatement<ore::BlockStm>();
     }
-#line 1217 "oreProject.tab.cpp"
+#line 1224 "oreProject.tab.cpp"
     break;
 
   case 12: /* compound_statement: LC statement_list RC  */
@@ -1221,7 +1228,7 @@ yyreduce:
     {
         (yyval.statement) = ore::Interpreter::getInp()->createStatement<ore::BlockStm>((yyvsp[-1].statementList));
     }
-#line 1225 "oreProject.tab.cpp"
+#line 1232 "oreProject.tab.cpp"
     break;
 
   case 13: /* selection_statement: IF LP expression RP statement  */
@@ -1229,7 +1236,7 @@ yyreduce:
     {
         (yyval.statement) = ore::Interpreter::getInp()->createStatement<ore::IfStm>((yyvsp[-2].expression), (yyvsp[0].statement));
     }
-#line 1233 "oreProject.tab.cpp"
+#line 1240 "oreProject.tab.cpp"
     break;
 
   case 14: /* internal_statement: PRINTN expression SEMICOLON  */
@@ -1237,7 +1244,7 @@ yyreduce:
     {
         (yyval.statement) = ore::Interpreter::getInp()->createStatement<ore::PrintStm>((yyvsp[-1].expression), true);
     }
-#line 1241 "oreProject.tab.cpp"
+#line 1248 "oreProject.tab.cpp"
     break;
 
   case 15: /* internal_statement: PRINT expression SEMICOLON  */
@@ -1245,7 +1252,7 @@ yyreduce:
     {
         (yyval.statement) = ore::Interpreter::getInp()->createStatement<ore::PrintStm>((yyvsp[-1].expression), false);
     }
-#line 1249 "oreProject.tab.cpp"
+#line 1256 "oreProject.tab.cpp"
     break;
 
   case 18: /* assign_expression: identifier_expression MULASS assign_expression  */
@@ -1253,7 +1260,7 @@ yyreduce:
     {
         (yyval.expression) = ore::Interpreter::getInp()->createToAssExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::mulAssExp);
     }
-#line 1257 "oreProject.tab.cpp"
+#line 1264 "oreProject.tab.cpp"
     break;
 
   case 19: /* assign_expression: identifier_expression DIVASS assign_expression  */
@@ -1261,7 +1268,7 @@ yyreduce:
     {
         (yyval.expression) = ore::Interpreter::getInp()->createToAssExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::divAssExp);
     }
-#line 1265 "oreProject.tab.cpp"
+#line 1272 "oreProject.tab.cpp"
     break;
 
   case 20: /* assign_expression: identifier_expression MODASS assign_expression  */
@@ -1269,7 +1276,7 @@ yyreduce:
     {
         (yyval.expression) = ore::Interpreter::getInp()->createToAssExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::modAssExp);
     }
-#line 1273 "oreProject.tab.cpp"
+#line 1280 "oreProject.tab.cpp"
     break;
 
   case 21: /* assign_expression: identifier_expression ADDASS assign_expression  */
@@ -1277,7 +1284,7 @@ yyreduce:
     {
         (yyval.expression) = ore::Interpreter::getInp()->createToAssExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::addAssExp);
     }
-#line 1281 "oreProject.tab.cpp"
+#line 1288 "oreProject.tab.cpp"
     break;
 
   case 22: /* assign_expression: identifier_expression SUBASS assign_expression  */
@@ -1285,163 +1292,179 @@ yyreduce:
     {
         (yyval.expression) = ore::Interpreter::getInp()->createToAssExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::subAssExp);
     }
-#line 1289 "oreProject.tab.cpp"
+#line 1296 "oreProject.tab.cpp"
     break;
 
-  case 23: /* assign_expression: identifier_expression ASS assign_expression  */
+  case 23: /* assign_expression: identifier_expression AMPASS assign_expression  */
 #line 127 "oreProject.y"
+    {
+        (yyval.expression) = ore::Interpreter::getInp()->createToAssExp((yyvsp[-2].expression),(yyvsp[0].expression), ore::ExpressionType::ampAssExp);
+    }
+#line 1304 "oreProject.tab.cpp"
+    break;
+
+  case 24: /* assign_expression: identifier_expression ASS assign_expression  */
+#line 131 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createAssExp((yyvsp[-2].expression), (yyvsp[0].expression));
     }
-#line 1297 "oreProject.tab.cpp"
+#line 1312 "oreProject.tab.cpp"
     break;
 
-  case 25: /* equality_expression: equality_expression EQ relational_expression  */
-#line 134 "oreProject.y"
+  case 26: /* equality_expression: equality_expression EQ relational_expression  */
+#line 138 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createRelationalExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::eqExp);
     }
-#line 1305 "oreProject.tab.cpp"
+#line 1320 "oreProject.tab.cpp"
     break;
 
-  case 26: /* equality_expression: equality_expression NE relational_expression  */
-#line 138 "oreProject.y"
+  case 27: /* equality_expression: equality_expression NE relational_expression  */
+#line 142 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createRelationalExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::neExp);
     }
-#line 1313 "oreProject.tab.cpp"
+#line 1328 "oreProject.tab.cpp"
     break;
 
-  case 28: /* relational_expression: relational_expression LT add_expression  */
-#line 145 "oreProject.y"
+  case 29: /* relational_expression: relational_expression LT add_expression  */
+#line 149 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createRelationalExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::ltExp);
     }
-#line 1321 "oreProject.tab.cpp"
+#line 1336 "oreProject.tab.cpp"
     break;
 
-  case 29: /* relational_expression: relational_expression GT add_expression  */
-#line 149 "oreProject.y"
+  case 30: /* relational_expression: relational_expression GT add_expression  */
+#line 153 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createRelationalExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::gtExp);
     }
-#line 1329 "oreProject.tab.cpp"
+#line 1344 "oreProject.tab.cpp"
     break;
 
-  case 30: /* relational_expression: relational_expression LE add_expression  */
-#line 153 "oreProject.y"
+  case 31: /* relational_expression: relational_expression LE add_expression  */
+#line 157 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createRelationalExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::leExp);
     }
-#line 1337 "oreProject.tab.cpp"
+#line 1352 "oreProject.tab.cpp"
     break;
 
-  case 31: /* relational_expression: relational_expression GE add_expression  */
-#line 157 "oreProject.y"
+  case 32: /* relational_expression: relational_expression GE add_expression  */
+#line 161 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createRelationalExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::geExp);
     }
-#line 1345 "oreProject.tab.cpp"
+#line 1360 "oreProject.tab.cpp"
     break;
 
-  case 33: /* add_expression: add_expression ADD mul_expression  */
-#line 164 "oreProject.y"
+  case 34: /* add_expression: add_expression ADD mul_expression  */
+#line 168 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createBinaryExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::addExp);
     }
-#line 1353 "oreProject.tab.cpp"
+#line 1368 "oreProject.tab.cpp"
     break;
 
-  case 34: /* add_expression: add_expression SUB mul_expression  */
-#line 168 "oreProject.y"
+  case 35: /* add_expression: add_expression SUB mul_expression  */
+#line 172 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createBinaryExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::subExp);
     }
-#line 1361 "oreProject.tab.cpp"
+#line 1376 "oreProject.tab.cpp"
     break;
 
-  case 36: /* mul_expression: mul_expression MUL primary_expression  */
-#line 175 "oreProject.y"
+  case 36: /* add_expression: add_expression AMP mul_expression  */
+#line 176 "oreProject.y"
+    {
+        (yyval.expression) = ore::Interpreter::getInp()->createBinaryExp((yyvsp[-2].expression),(yyvsp[0].expression),ore::ExpressionType::ampExp);
+    }
+#line 1384 "oreProject.tab.cpp"
+    break;
+
+  case 38: /* mul_expression: mul_expression MUL primary_expression  */
+#line 183 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createBinaryExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::mulExp);
     }
-#line 1369 "oreProject.tab.cpp"
+#line 1392 "oreProject.tab.cpp"
     break;
 
-  case 37: /* mul_expression: mul_expression DIV primary_expression  */
-#line 179 "oreProject.y"
+  case 39: /* mul_expression: mul_expression DIV primary_expression  */
+#line 187 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createBinaryExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::divExp);
     }
-#line 1377 "oreProject.tab.cpp"
+#line 1400 "oreProject.tab.cpp"
     break;
 
-  case 38: /* mul_expression: mul_expression MOD primary_expression  */
-#line 183 "oreProject.y"
+  case 40: /* mul_expression: mul_expression MOD primary_expression  */
+#line 191 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createBinaryExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::modExp);
     }
-#line 1385 "oreProject.tab.cpp"
+#line 1408 "oreProject.tab.cpp"
     break;
 
-  case 39: /* mul_expression: mul_expression EXPO primary_expression  */
-#line 187 "oreProject.y"
+  case 41: /* mul_expression: mul_expression EXPO primary_expression  */
+#line 195 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createBinaryExp((yyvsp[-2].expression), (yyvsp[0].expression), ore::ExpressionType::expoExp);
     }
-#line 1393 "oreProject.tab.cpp"
+#line 1416 "oreProject.tab.cpp"
     break;
 
-  case 42: /* primary_expression: STR_LITERAL  */
-#line 196 "oreProject.y"
+  case 44: /* primary_expression: STR_LITERAL  */
+#line 204 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createStringLiteralExp();
     }
-#line 1401 "oreProject.tab.cpp"
+#line 1424 "oreProject.tab.cpp"
     break;
 
-  case 43: /* identifier_expression: IDENTIFIER  */
-#line 202 "oreProject.y"
+  case 45: /* identifier_expression: IDENTIFIER  */
+#line 210 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createVariableExp((yyvsp[0].fixedString));
     }
-#line 1409 "oreProject.tab.cpp"
+#line 1432 "oreProject.tab.cpp"
     break;
 
-  case 44: /* constart_expression: DOUBLE_LITERAL  */
-#line 208 "oreProject.y"
-    {
-        (yyval.expression) = (yyvsp[0].expression);
-    }
-#line 1417 "oreProject.tab.cpp"
-    break;
-
-  case 45: /* constart_expression: INT_LITERAL  */
-#line 212 "oreProject.y"
-    {
-        (yyval.expression) = (yyvsp[0].expression);
-    }
-#line 1425 "oreProject.tab.cpp"
-    break;
-
-  case 46: /* constart_expression: TRUE_T  */
+  case 46: /* constart_expression: DOUBLE_LITERAL  */
 #line 216 "oreProject.y"
+    {
+        (yyval.expression) = (yyvsp[0].expression);
+    }
+#line 1440 "oreProject.tab.cpp"
+    break;
+
+  case 47: /* constart_expression: INT_LITERAL  */
+#line 220 "oreProject.y"
+    {
+        (yyval.expression) = (yyvsp[0].expression);
+    }
+#line 1448 "oreProject.tab.cpp"
+    break;
+
+  case 48: /* constart_expression: TRUE_T  */
+#line 224 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createBoolLiteralExp(true);
     }
-#line 1433 "oreProject.tab.cpp"
+#line 1456 "oreProject.tab.cpp"
     break;
 
-  case 47: /* constart_expression: FALSE_T  */
-#line 220 "oreProject.y"
+  case 49: /* constart_expression: FALSE_T  */
+#line 228 "oreProject.y"
     {
         (yyval.expression) = ore::Interpreter::getInp()->createBoolLiteralExp(false);
     }
-#line 1441 "oreProject.tab.cpp"
+#line 1464 "oreProject.tab.cpp"
     break;
 
 
-#line 1445 "oreProject.tab.cpp"
+#line 1468 "oreProject.tab.cpp"
 
       default: break;
     }
@@ -1635,4 +1658,4 @@ yyreturn:
   return yyresult;
 }
 
-#line 224 "oreProject.y"
+#line 232 "oreProject.y"

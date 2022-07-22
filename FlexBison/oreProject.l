@@ -26,6 +26,7 @@ int yywrap(void){ return 1; }
     "%=" return MODASS;
     "+=" return ADDASS;
     "-=" return SUBASS;
+    "&="    return AMPASS;
     "==" return EQ;
     "!=" return NE;
     "<=" return LE;
@@ -37,6 +38,7 @@ int yywrap(void){ return 1; }
     "*"     return MUL;
     "/"     return DIV;
     "%"     return MOD;
+    "&"     return AMP;
     "**"    return EXPO;
     "=" return ASS;
     "output"     return PRINTN;
