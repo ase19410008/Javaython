@@ -61,27 +61,38 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     IDENTIFIER = 258,              /* IDENTIFIER  */
-    INT_LITERAL = 259,             /* INT_LITERAL  */
-    DOUBLE_LITERAL = 260,          /* DOUBLE_LITERAL  */
-    STR_LITERAL = 261,             /* STR_LITERAL  */
-    AMP = 262,                     /* AMP  */
-    SEMICOLON = 263,               /* SEMICOLON  */
-    ADD = 264,                     /* ADD  */
-    SUB = 265,                     /* SUB  */
-    MUL = 266,                     /* MUL  */
-    DIV = 267,                     /* DIV  */
-    MOD = 268,                     /* MOD  */
-    CR = 269,                      /* CR  */
-    MULASS = 270,                  /* MULASS  */
-    DIVASS = 271,                  /* DIVASS  */
-    MODASS = 272,                  /* MODASS  */
-    ADDASS = 273,                  /* ADDASS  */
-    SUBASS = 274,                  /* SUBASS  */
-    AMPASS = 275,                  /* AMPASS  */
-    ASS = 276,                     /* ASS  */
-    PRINTN = 277,                  /* PRINTN  */
-    PRINT = 278,                   /* PRINT  */
-    EXPO = 279                     /* EXPO  */
+    TRUE_T = 259,                  /* TRUE_T  */
+    FALSE_T = 260,                 /* FALSE_T  */
+    INT_LITERAL = 261,             /* INT_LITERAL  */
+    DOUBLE_LITERAL = 262,          /* DOUBLE_LITERAL  */
+    STR_LITERAL = 263,             /* STR_LITERAL  */
+    LP = 264,                      /* LP  */
+    RP = 265,                      /* RP  */
+    LC = 266,                      /* LC  */
+    RC = 267,                      /* RC  */
+    EQ = 268,                      /* EQ  */
+    NE = 269,                      /* NE  */
+    LE = 270,                      /* LE  */
+    GE = 271,                      /* GE  */
+    LT = 272,                      /* LT  */
+    GT = 273,                      /* GT  */
+    SEMICOLON = 274,               /* SEMICOLON  */
+    ADD = 275,                     /* ADD  */
+    SUB = 276,                     /* SUB  */
+    MUL = 277,                     /* MUL  */
+    DIV = 278,                     /* DIV  */
+    MOD = 279,                     /* MOD  */
+    CR = 280,                      /* CR  */
+    MULASS = 281,                  /* MULASS  */
+    DIVASS = 282,                  /* DIVASS  */
+    MODASS = 283,                  /* MODASS  */
+    ADDASS = 284,                  /* ADDASS  */
+    SUBASS = 285,                  /* SUBASS  */
+    ASS = 286,                     /* ASS  */
+    PRINTN = 287,                  /* PRINTN  */
+    PRINT = 288,                   /* PRINT  */
+    EXPO = 289,                    /* EXPO  */
+    IF = 290                       /* IF  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -98,7 +109,7 @@ union YYSTYPE
     ore::StatementList* statementList;
     ore::Root* root;
 
-#line 102 "oreProject.tab.h"
+#line 113 "oreProject.tab.h
 
 };
 typedef union YYSTYPE YYSTYPE;

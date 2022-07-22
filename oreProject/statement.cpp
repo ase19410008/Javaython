@@ -78,6 +78,76 @@ namespace ore {
 		return SmtRes();
 	}
 
+	SmtRes StatementList::ExcuteFromCase(Value val) const {
+		setRuntimeLineNumber();
+		auto stml = this;
+		bool findCase = false;
+		SmtRes stmRes;
+		while (stml)
+		{
+			auto stm = stml->getStm();
+			if (stm) {
+				if (findCase) {
+					stmRes = stm->Excute();
+					stmRes.m_CaseExec = true;
+					if (stmRes.m_Type == SmtResType::breakType || stmRes.m_Type == SmtResType::voidType) {
+						return stmRes;
+					}
+				}
+				else if (typeid(*stm) == typeid(CaseStm)) {
+					auto caseStm = dynamic_cast<const CaseStm*>(stm);
+					auto caseVal = caseStm->getExpExcute();
+					if (val == caseVal.getTypedValue(val.getType())) {
+						findCase = true;
+						stmRes = stm->Excute();
+						stmRes.m_CaseExec = true;
+						if (stmRes.m_Type == SmtResType::breakType || stmRes.m_Type == SmtResType::voidType) {
+							return stmRes;
+						}
+					}
+				}
+			}
+			else {
+				break;
+			}
+			stml = stml->getNext();
+		}
+		if (findCase) {
+			stmRes.m_CaseExec = true;
+		}
+		return stmRes;
+	}
+
+	SmtRes StatementList::ExcuteFromDefault() const {
+		setRuntimeLineNumber();
+		auto stml = this;
+		bool findDefault = false;
+		while (stml)
+		{
+			auto stm = stml->getStm();
+			if (stm) {
+				if (findDefault) {
+					auto res = stm->Excute();
+					if (res.m_Type == SmtResType::breakType || res.m_Type == SmtResType::voidType) {
+						return res;
+					}
+				}
+				else if (typeid(*stm) == typeid(DefaultStm)) {
+					findDefault = true;
+					auto res = stm->Excute();
+					if (res.m_Type == SmtResType::breakType || res.m_Type == SmtResType::voidType) {
+						return res;
+					}
+				}
+			}
+			else {
+				break;
+			}
+			stml = stml->getNext();
+		}
+		return SmtRes();
+	}
+
 	struct ExpressionStm::Impl {
 		const Expression* m_Exp;
 	};
@@ -108,6 +178,153 @@ namespace ore {
 		}
 		return SmtRes();
 	}
+
+	struct IfStm::Impl {
+		const Expression* m_Condition;
+		const Statement* m_Statement;
+	};
+
+	IfStm::IfStm(const Expression* condition, const Statement* stm)
+		: Statement(StatementType::ifStm),
+		pImpl(new Impl) {
+		pImpl->m_Condition = condition;
+		pImpl->m_Statement = stm;
+	}
+
+	/*IfStm::~IfStm() {
+		delete pImpl;
+	}*/
+
+	const Expression* IfStm::getCondition() const {
+		return pImpl->m_Condition;
+	}
+
+	const Statement* IfStm::getStatement() const {
+		return pImpl->m_Statement;
+	}
+
+	SmtRes IfStm::Excute() const {
+		setRuntimeLineNumber();
+		auto val = getCondition()->Excute();
+		if (val.getBool()) {
+			return getStatement()->Excute();
+		}
+		return SmtRes();
+	}
+
+	struct CaseStm::Impl {
+		const Expression* m_Expression;
+		const Statement* m_Statement;
+	};
+
+	CaseStm::CaseStm(const Expression* exp, const Statement* stm)
+		: Statement(StatementType::ifStm),
+		pImpl(new Impl) {
+		pImpl->m_Expression = exp;
+		pImpl->m_Statement = stm;
+	}
+
+	/*CaseStm::~CaseStm() {
+		delete pImpl;
+	}*/
+
+	const Expression* CaseStm::getExp() const {
+		return pImpl->m_Expression;
+	}
+
+	const Statement* CaseStm::getStatement() const {
+		return pImpl->m_Statement;
+	}
+
+	Value CaseStm::getExpExcute() const {
+		return getExp()->Excute();
+	}
+
+	SmtRes CaseStm::Excute() const {
+		setRuntimeLineNumber();
+		return getStatement()->Excute();
+	}
+
+	struct DefaultStm::Impl {
+		const Statement* m_Statement;
+	};
+
+	DefaultStm::DefaultStm(const Statement* stm)
+		: Statement(StatementType::ifStm),
+		pImpl(new Impl) {
+		pImpl->m_Statement = stm;
+	}
+
+	/*DefaultStm::~DefaultStm() {
+		delete pImpl;
+	}*/
+
+	const Statement* DefaultStm::getStatement() const {
+		return pImpl->m_Statement;
+	}
+
+	SmtRes DefaultStm::Excute() const {
+		setRuntimeLineNumber();
+		return getStatement()->Excute();
+	}
+
+	struct BlockStm::Impl {
+		StatementList* m_StatementList;
+	};
+
+	BlockStm::BlockStm(StatementList* stml)
+		: Statement(StatementType::ifStm),
+		pImpl(new Impl) {
+		pImpl->m_StatementList = stml;
+	}
+
+	BlockStm::BlockStm()
+		: Statement(StatementType::blockStm),
+		pImpl(new Impl)
+	{
+		pImpl->m_StatementList = nullptr;
+	}
+
+	const StatementList* BlockStm::getStatementList() const {
+		return pImpl->m_StatementList;
+	}
+
+	SmtRes BlockStm::Excute() const {
+		setRuntimeLineNumber();
+		Interpreter::getInp()->pushRuntime();
+		if (auto stml = getStatementList()) {
+			auto res = stml->Excute();
+			Interpreter::getInp()->popRuntime();
+			return res;
+		}
+		Interpreter::getInp()->popRuntime();
+		return SmtRes();
+	}
+
+	SmtRes BlockStm::ExcuteFromCase(Value val) const {
+		setRuntimeLineNumber();
+		Interpreter::getInp()->pushRuntime();
+		if (auto stml = getStatementList()) {
+			 auto res = stml->ExcuteFromCase(val);
+			 Interpreter::getInp()->popRuntime();
+			return res;
+		}
+		Interpreter::getInp()->popRuntime();
+		return SmtRes();
+	}
+
+	SmtRes BlockStm::ExcuteFromDefault() const {
+		setRuntimeLineNumber();
+		Interpreter::getInp()->pushRuntime();
+		if (auto stml = getStatementList()) {
+			 auto res = stml->ExcuteFromDefault();
+			 Interpreter::getInp()->popRuntime();
+			return res;
+		}
+		Interpreter::getInp()->popRuntime();
+		return SmtRes();
+	}
+
 
 	struct PrintStm::Impl {
 		const Expression* m_Expression;

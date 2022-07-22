@@ -4,6 +4,7 @@ namespace ore {
 
     enum class ExpressionType {
         noExp = 0,
+        boolLiteralExp = 0,
         intLiteralExp,
         doubleLiteralExp,
         stringLiteralExp,
@@ -21,6 +22,12 @@ namespace ore {
         mulExp,
         divExp,
         modExp,
+        eqExp,
+        neExp,
+        gtExp,
+        geExp,
+        ltExp,
+        leExp,
         printExp,
         expTypeCount,
         expoExp
@@ -35,6 +42,17 @@ namespace ore {
         virtual Value Excute() const {
             return Value();
         }
+    private:
+        struct Impl;
+        Impl* pImpl;
+    };
+
+    class BoolLiteralExp : public Expression {
+    public:
+        BoolLiteralExp(bool b = false);
+        virtual ~BoolLiteralExp();
+        bool getBoolValue()const;
+        virtual Value Excute() const  override;
     private:
         struct Impl;
         Impl* pImpl;
@@ -122,4 +140,15 @@ namespace ore {
         Impl* pImpl;
     };
 
+    class RelationalExp : public Expression {
+    public:
+        RelationalExp(ExpressionType type, const Expression* left, const Expression* right);
+        virtual ~RelationalExp();
+        const Expression* getLeft()const;
+        const Expression* getRight()const;
+        virtual Value Excute() const  override;
+    private:
+        struct Impl;
+        Impl* pImpl;
+    };
 }

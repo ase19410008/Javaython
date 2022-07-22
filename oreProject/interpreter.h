@@ -27,12 +27,14 @@ namespace ore {
 		const char* createFixedString(const char* ext);
 
 		Expression* createVariableExp(const char* ident);
+		Expression* createBoolLiteralExp(bool b);
 		Expression* createIntLiteralExp(const char* ext);
 		Expression* createDoubleLiteralExp(const char* ext);
 		void startStringLiteral();
 		void addStringLiteral(char ext);
 		Expression* createStringLiteralExp();
 		Expression* createBinaryExp(const Expression* left, const Expression* right, ExpressionType t);
+		Expression* createRelationalExp(const Expression* left, const Expression* right, ExpressionType t);
 		Expression* createAssExp(const Expression* ident, const Expression* right);
 		Expression* createToAssExp(const Expression* ident, const Expression* right, ExpressionType t);
 
@@ -51,6 +53,10 @@ namespace ore {
 		static Interpreter* getInp();
 
 		Value& getGlobalValiableValue(const char* key);
+
+		void pushRuntime(bool IsFunc = false);
+		void popRuntime();
+
 		void syntaxKeepExit(int mess_id, const char* detail);
 		void syntaxExit(int mess_id, int linnum, const char* detail, bool bison = true);
 

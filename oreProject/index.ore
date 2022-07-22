@@ -1,7 +1,7 @@
 a = "abc";
-output a;
-output "hello
-world!!";
+@@ output a;
+@@ output "hello
+@@ world!!";
 
 @@ output 12 += 2;
 @@ output 12 %= 2; error 右辺が変数の場合のみ動作
@@ -13,8 +13,21 @@ test1 &= "abc";
 output "1: " & test1;
 
 x = 5;
-x += 2;
-output x %= 2;
+@@ x += 2;
+@@ output x %= 2;
+
+if (1 < 2) {
+	output "lt";
+}
+if (2 > 1) {
+	output "rt";
+}
+if (1 <= 1) {
+	output "le";
+}
+if (1 >= 1) {
+	output "ge";
+}
 
 @@ ����������
 
