@@ -244,6 +244,9 @@ namespace ore {
             case ExpressionType::subAssExp:
                 v -= pImpl->m_Operand->Excute();
                 break;
+            case ExpressionType::ampAssExp:
+                v &= pImpl->m_Operand->Excute();
+                break;
             case ExpressionType::mulAssExp:
                 v *= pImpl->m_Operand->Excute();
                 break;

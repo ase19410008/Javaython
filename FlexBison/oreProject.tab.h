@@ -110,7 +110,6 @@ union YYSTYPE
     ore::Statement* statement;
     ore::StatementList* statementList;
     ore::Root* root;
-
 #line 115 "oreProject.tab.h"
 
 };
