@@ -33,7 +33,6 @@ int yywrap(void){ return 1; }
     ">=" return GE;
     "<" return LT;
     ">" return GT;
-    "&="    return AMPASS
     "+"     return ADD;
     "-"     return SUB;
     "*"     return MUL;
@@ -41,7 +40,6 @@ int yywrap(void){ return 1; }
     "%"     return MOD;
     "&"     return AMP;
     "**"    return EXPO;
-    "&"     return AMP;
     "=" return ASS;
     "output"     return PRINTN;
     "p"     return PRINT;
