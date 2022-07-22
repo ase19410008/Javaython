@@ -29,6 +29,10 @@ if (1 >= 1) {
 	output "ge";
 }
 
+test1 = 123;
+test1 &= "abc";
+output "1: " & test1;
+
 @@ ����������
 
 /@

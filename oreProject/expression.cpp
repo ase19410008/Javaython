@@ -256,6 +256,10 @@ namespace ore {
             case ExpressionType::modAssExp:
                 v %= pImpl->m_Operand->Excute();
                 break;
+            case ExpressionType::ampAssExp:
+                //参照に追文字列加算
+                v &= pImpl->m_Operand->Excute();
+                break;
             }
             return v;
         }
