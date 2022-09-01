@@ -268,6 +268,69 @@ namespace ore {
 		return getStatement()->Excute();
 	}
 
+	struct ForStm::Impl {
+		const Statement* m_InitStatement;
+		const Expression* m_Condition;
+		const Expression* m_Post;
+		const Statement* m_Statement;
+	};
+
+	ForStm::ForStm(const Statement* initstm, const Expression* condition, const Expression* post, const Statement* stm)
+		: Statement(StatementType::forStm),
+		pImpl(new Impl) {
+		pImpl->m_InitStatement = initstm;
+		pImpl->m_Condition = condition;
+		pImpl->m_Post = post;
+		pImpl->m_Statement = stm;
+	}
+
+	/*ForStm::~ForStm() {
+		delete pImpl;
+	}*/
+
+	const Statement* ForStm::getInitStatement() const {
+		return pImpl->m_InitStatement;
+	}
+
+	const Expression* ForStm::getCondition()const {
+		return pImpl->m_Condition;
+	}
+
+	const Expression* ForStm::getPost()const {
+		return pImpl->m_Post;
+	}
+
+	const Statement* ForStm::getStatement() const {
+		return pImpl->m_Statement;
+	}
+
+	SmtRes ForStm::Excute() const {
+		setRuntimeLineNumber();
+		Interpreter::getInp()->pushBreak();
+		Interpreter::getInp()->pushLoop();
+		for (getInitStatement()->Excute();
+			getCondition()->Excute().getBool();
+			getPost()->Excute()) {
+			getCondition()->Excute().getBool();
+			getPost()->Excute();
+			auto res = getStatement()->Excute();
+			if (res.m_Type == SmtResType::continueType) {
+				continue;
+			}
+			else if (res.m_Type == SmtResType::breakType) {
+				break;
+			}
+			else if (res.m_Type == SmtResType::returnType) {
+				Interpreter::getInp()->popLoop();
+				Interpreter::getInp()->popBreak();
+				return res;
+			}
+		}
+		Interpreter::getInp()->popLoop();
+		Interpreter::getInp()->popBreak();
+		return SmtRes();
+	}
+
 	struct BlockStm::Impl {
 		StatementList* m_StatementList;
 	};

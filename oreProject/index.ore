@@ -29,6 +29,10 @@ if (1 >= 1) {
 	output "ge";
 }
 
+for (i = 0; i < 3; i = i + 1) {
+	output "ase19410008";
+}
+
 test1 = 123;
 test1 &= "abc";
 output "1: " & test1;

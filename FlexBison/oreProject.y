@@ -25,7 +25,7 @@ int yyerror(char const *str) {
 %token <expression> TRUE_T FALSE_T INT_LITERAL DOUBLE_LITERAL STR_LITERAL
 %token LP RP LC RC EQ NE LE GE LT GT SEMICOLON AMP ADD SUB MUL DIV MOD CR 
 %token MULASS DIVASS MODASS ADDASS SUBASS AMPASS ASS PRINTN PRINT EXPO
-%token IF
+%token IF FOR
 %right ASS
 %right ADDASS SUBASS AMPASS
 %right MULASS DIVASS MODASS
@@ -36,7 +36,7 @@ int yyerror(char const *str) {
 %type <expression> relational_expression equality_expression
 %type <expression> assign_expression expression
 %type <statement> expression_statement compound_statement internal_statement statement
-%type <statement> selection_statement
+%type <statement> selection_statement iteration_statement
 %type <statementList> statement_list
 %type <root> root
 %%
@@ -60,6 +60,7 @@ statement
     : expression_statement
     | compound_statement
     | selection_statement
+    | iteration_statement
     | internal_statement
     ;
 expression_statement
@@ -86,6 +87,12 @@ selection_statement
     : IF LP expression RP statement
     {
         $$ = ore::Interpreter::getInp()->createStatement<ore::IfStm>($3, $5);
+    }
+    ;
+iteration_statement
+    : FOR LP statement expression SEMICOLON expression RP statement
+    {
+        $$ = ore::Interpreter::getInp()->createStatement<ore::ForStm>($3, $4, $6, $8);
     }
     ;
 internal_statement

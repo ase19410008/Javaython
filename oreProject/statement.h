@@ -6,12 +6,14 @@ namespace ore {
 		expressionStm,
 		blockStm,
 		ifStm,
+		forStm,
 		printStm,
 		stmTypeCount
 	};
 
 	enum class SmtResType {
 		voidType,
+		continueType,
 		breakType,
 		returnType,
 	};
@@ -105,6 +107,20 @@ namespace ore {
 	public:
 		DefaultStm(const Statement* stm);
 		virtual ~DefaultStm() {}
+		const Statement* getStatement() const;
+		virtual SmtRes Excute() const override;
+	private:
+		struct Impl;
+		Impl* pImpl;
+	};
+
+	class ForStm : public Statement {
+	public:
+		ForStm(const Statement* initstm, const Expression* condition, const Expression* post, const Statement* stm);
+		virtual ~ForStm() {}
+		const Statement* getInitStatement() const;
+		const Expression* getCondition()const;
+		const Expression* getPost()const;
 		const Statement* getStatement() const;
 		virtual SmtRes Excute() const override;
 	private:

@@ -16,6 +16,7 @@ int yywrap(void){ return 1; }
     "true" return TRUE_T;
     "false" return FALSE_T;
     "if" return IF;
+    "for" return FOR;
     "("  return LP;
     ")"  return RP;
     "{"  return LC;
