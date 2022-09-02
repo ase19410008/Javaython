@@ -71,6 +71,8 @@ namespace ore {
 		map<int, string> m_ErrMap;
 		bool m_IsWorningOut;
 		int m_RuntimeLineNumber;
+		int m_BreakDeps;
+		int m_LoopDeps;
 	};
 
 	Interpreter* theInp;
@@ -125,6 +127,8 @@ namespace ore {
 		pImpl->m_RuntimeLineNumber = 1;
 		pImpl->m_TempVal = Value();
 		pImpl->m_ConfigMap["calc_epsilon"] = ".000001";
+		pImpl->m_BreakDeps = 0;
+		pImpl->m_LoopDeps = 0;
 	}
 
 	Interpreter::~Interpreter() {
@@ -260,7 +264,7 @@ namespace ore {
 	}
 
 	StatementList* Interpreter::createStatementList(StatementList* stml, const Statement* stm) {
-		StatementList *pos;
+		StatementList* pos;
 		if (stml == nullptr)
 			return createStatementList(stm);
 		for (pos = stml; pos->getNext(); pos = pos->getNext())
@@ -297,6 +301,28 @@ namespace ore {
 		if (parPtr) {
 			pImpl->m_CurrentRuntime = parPtr;
 			pImpl->m_CurrentRuntime->m_Child.reset();
+		}
+	}
+
+	void Interpreter::pushLoop() {
+		pImpl->m_LoopDeps++;
+	}
+
+	void Interpreter::popLoop() {
+		pImpl->m_LoopDeps--;
+		if (pImpl->m_LoopDeps < 0) {
+			Interpreter::getInp()->runtimeExit(2015);
+		}
+	}
+
+	void Interpreter::pushBreak() {
+		pImpl->m_BreakDeps++;
+	}
+
+	void Interpreter::popBreak() {
+		pImpl->m_BreakDeps--;
+		if (pImpl->m_BreakDeps < 0) {
+			Interpreter::getInp()->runtimeExit(2015);
 		}
 	}
 

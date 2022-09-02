@@ -57,6 +57,13 @@ namespace ore {
 		void pushRuntime(bool IsFunc = false);
 		void popRuntime();
 
+		void pushLoop();
+		void popLoop();
+
+		void pushBreak();
+		void popBreak();
+
+
 		void syntaxKeepExit(int mess_id, const char* detail);
 		void syntaxExit(int mess_id, int linnum, const char* detail, bool bison = true);
 

@@ -94,7 +94,8 @@ extern int yydebug;
     PRINTN = 289,                  /* PRINTN  */
     PRINT = 290,                   /* PRINT  */
     EXPO = 291,                    /* EXPO  */
-    IF = 292                       /* IF  */
+    IF = 292,                      /* IF  */
+    FOR = 293                      /* FOR  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -111,7 +112,7 @@ union YYSTYPE
     ore::StatementList* statementList;
     ore::Root* root;
 
-#line 115 "oreProject.tab.h"
+#line 116 "oreProject.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
